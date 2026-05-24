@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northstar Co.</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #5f6f77;
+      --line: #dde5e8;
+      --paper: #f7f9f8;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 6px;
+      background: var(--brand);
+      color: var(--white);
+      font-weight: 700;
+      border: 1px solid var(--brand);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--brand-dark);
+      border-color: var(--brand);
+    }
+
+    .hero {
+      padding: 84px 0 72px;
+      background:
+        linear-gradient(rgba(23, 32, 38, 0.68), rgba(23, 32, 38, 0.72)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80") center/cover;
+      color: var(--white);
+    }
+
+    .hero-content {
+      max-width: 690px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #b8f0e8;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.25rem, 6vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      margin: 22px 0 30px;
+      max-width: 620px;
+      color: #e9f2f1;
+      font-size: 1.15rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 26px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stats {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--brand-dark);
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      background: var(--brand-dark);
+      color: var(--white);
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .cta p {
+      margin: 0;
+      color: #d8eeeb;
+      max-width: 640px;
+    }
+
+    .cta .button {
+      background: var(--accent);
+      border-color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    footer {
+      padding: 26px 0;
+      background: var(--ink);
+      color: #c9d3d7;
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 68px 0 56px;
+      }
+
+      .grid,
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-grid {
+        text-align: left;
+      }
+
+      .cta-inner,
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Primary navigation">
+      <a class="logo" href="#">Northstar Co.</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#results">Results</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Strategy, operations, and growth</p>
+        <h1>Practical consulting for ambitious teams.</h1>
+        <p>Northstar Co. helps growing companies sharpen strategy, streamline operations, and build reliable systems that scale with demand.</p>
+        <div class="hero-actions">
+          <a class="button" href="#contact">Start a Project</a>
+          <a class="button secondary" href="#services">View Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Focused support where it matters most.</h2>
+          <p>We work alongside leadership teams to turn unclear priorities into practical plans, cleaner processes, and measurable results.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Business Strategy</h3>
+            <p>Market positioning, planning cycles, operating models, and decision frameworks for teams that need sharper direction.</p>
+          </article>
+          <article class="card">
+            <h3>Operations Design</h3>
+            <p>Workflow audits, process improvements, documentation, and reporting systems that reduce friction across the company.</p>
+          </article>
+          <article class="card">
+            <h3>Growth Programs</h3>
+            <p>Customer insights, sales enablement, launch planning, and performance tracking for sustainable expansion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="stats">
+      <div class="container stat-grid">
+        <div class="stat">
+          <strong>42%</strong>
+          <span>Average process time saved</span>
+        </div>
+        <div class="stat">
+          <strong>120+</strong>
+          <span>Projects delivered</span>
+        </div>
+        <div class="stat">
+          <strong>18</strong>
+          <span>Industries supported</span>
+        </div>
+        <div class="stat">
+          <strong>9.4</strong>
+          <span>Client satisfaction score</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container cta-inner">
+        <div>
+          <h2>Ready to clarify the next move?</h2>
+          <p>Tell us what your team is trying to improve. We will map the right engagement and next steps.</p>
+        </div>
+        <a class="button" href="mailto:hello@northstar.example">hello@northstar.example</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Northstar Co.</span>
+      <span>Built for focused, practical growth.</span>
+    </div>
+  </footer>
+</body>
+</html>
